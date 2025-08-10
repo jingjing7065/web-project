@@ -34,12 +34,11 @@ jobs:
       with:
         repository: jingjing7065/argo-cd
         ssh-key: ${{ secrets.GITOPS_SSH_KEY }}
-        path: gitops
+
 
     - name: Update Deployment image tag in GitOps repo
       run: |
-        sed -i "s|image: userjingjing/kube-petclinic-app:.*|image: userjingjing/kube-petclinic-app:${{ env.IMAGE_TAG }}|" gitops/deployment.yaml
-        cd gitops
+        sed -i "s|image: userjingjing/kube-petclinic-app:.*|image: userjingjing/kube-petclinic-app:${{ env.IMAGE_TAG }}|" java-app-deployment/java-app/java.yml
         git config user.name "github-actions"
         git config user.email "actions@github.com"
         git commit -am "Update image tag to ${{ env.IMAGE_TAG }}"
