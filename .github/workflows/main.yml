@@ -23,7 +23,7 @@ jobs:
         IMAGE_TAG=$(date +%Y%m%d%H%M%S)
         echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
         pwd
-        ls /
+        ls 
         docker build -t userjingjing/kube-petclinic-app:$IMAGE_TAG .
 
     - name: Push Docker image to Docker Hub
